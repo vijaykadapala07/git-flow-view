@@ -1,0 +1,22 @@
+{
+  "default": [
+    {
+      "id": "overview",
+      "title": "What's in this repo",
+      "focus": "Map the top-level folders and the important files inside them. For each area say in plain words what it holds and why it exists. Show how the areas depend on or feed each other.",
+      "sources": []
+    },
+    {
+      "id": "main-flow",
+      "title": "Main flow",
+      "focus": "Pick the single most important thing that happens in this repo (a request being served, a job running, a build) and walk through it step by step from the trigger to the final result.",
+      "sources": []
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture (engineers)",
+      "classic": true
+    }
+  ],
+  "repos": {}
+}

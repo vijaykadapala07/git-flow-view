@@ -1,0 +1,29 @@
+# Local stand-ins for Upstash (Redis + REST proxy) and R2 (S3Mock).
+services:
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes: [redis-data:/data]
+  redis-http:
+    image: hiett/serverless-redis-http:latest
+    environment:
+      SRH_MODE: env
+      SRH_TOKEN: local-token
+      SRH_CONNECTION_STRING: redis://redis:6379
+    ports: ["8079:80"]
+    depends_on: [redis]
+  s3:
+    image: adobe/s3mock:latest
+    # The named volume is root-owned; the image's own user cannot write to it.
+    user: root
+    environment:
+      COM_ADOBE_TESTING_S3MOCK_STORE_INITIAL_BUCKETS: gitflowview-public,gitflowview-private
+      # Keep stored diagrams across container and Docker restarts.
+      COM_ADOBE_TESTING_S3MOCK_STORE_ROOT: /data
+      COM_ADOBE_TESTING_S3MOCK_STORE_RETAIN_FILES_ON_EXIT: "true"
+    volumes: [s3-data:/data]
+    ports: ["9090:9090"]
+
+volumes:
+  redis-data:
+  s3-data:
