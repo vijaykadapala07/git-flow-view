@@ -25,7 +25,7 @@ const GH_CREDENTIALS = [
 const inFlight = new Map<string, Promise<string>>();
 const lastFetch = new Map<string, number>();
 
-export function isAutoCloneEnabled(): boolean {
+function isAutoCloneEnabled(): boolean {
   return process.env.GH_AUTO_CLONE?.trim() === "1";
 }
 
@@ -35,7 +35,7 @@ function validName(value: string): boolean {
   return NAME.test(value) && !value.includes("..") && !value.endsWith(".git");
 }
 
-export function autoCloneRoot(): string {
+function autoCloneRoot(): string {
   return join(homedir(), ".gitflowview", "repos");
 }
 

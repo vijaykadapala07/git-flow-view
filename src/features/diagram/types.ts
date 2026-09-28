@@ -5,7 +5,7 @@ import type {
   GraphAttemptAudit,
 } from "~/features/diagram/graph";
 
-export type DiagramStreamStatus =
+type DiagramStreamStatus =
   | "idle"
   | "started"
   | "explanation_sent"

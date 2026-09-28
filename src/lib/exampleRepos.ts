@@ -1,4 +1,4 @@
-export const exampleRepos = {
+const exampleRepos = {
   FastAPI: "/fastapi/fastapi",
   Flask: "/pallets/flask",
   Monkeytype: "/monkeytypegame/monkeytype",
